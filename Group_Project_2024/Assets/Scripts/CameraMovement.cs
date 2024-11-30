@@ -8,7 +8,6 @@ public class CameraMovement : MonoBehaviour
     public Vector3 offset;
     void Update()
     {
-        offset += target.transform.
         transform.position = target.position + offset;
         
     }
