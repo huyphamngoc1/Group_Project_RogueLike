@@ -33,6 +33,5 @@ public class PlayerAnimator : MonoBehaviour
         else{
             sr.flipX=false;
         }
-
     }
 }
