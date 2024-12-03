@@ -62,44 +62,44 @@ public class RangedEnemy : MonoBehaviour
 
             if (distanceToTarget <= safeDistance)
             {
+                // Move away from player while trying to avoid cornering itself
+                Vector3 directionAwayFromPlayer = (transform.position - target.position).normalized;
+                Vector3 targetPosition = target.position + directionAwayFromPlayer * safeDistance;
+
+                // Set the agent's destination to avoid getting too close to the player
+                agent.SetDestination(targetPosition);
+            }
+            else
+            {
+                // If the player is far enough away, move towards the target to close the gap (not necessarily the exact position)
+                Vector3 directionTowardsPlayer = (target.position - transform.position).normalized;
+                agent.SetDestination(target.position + directionTowardsPlayer * safeDistance); // Keeps a buffer between enemy and player
+            }
+
+            // Attack logic
+            if (distanceToTarget <= shootingRange && Time.time >= lastAttackTime + attackCooldown)
+            {
                 // Switch to attack animation
                 animator.SetBool("Enemy_Attack", true);
 
-                // Stop moving
-                agent.ResetPath();
-
-                // Kiểm tra cooldown trước khi bắn
-                if (Time.time >= lastAttackTime + attackCooldown)
+                // Check for bullet existence and spawn it
+                if (bullet != null && bulletParent != null)
                 {
-                    // Kiểm tra xem bullet và bulletParent có null không
-                    if (bullet != null && bulletParent != null)
-                    {
-                        Instantiate(bullet, bulletParent.transform.position, Quaternion.identity);
-                        lastAttackTime = Time.time; // Cập nhật thời gian bắn
-                    }
-                    else
-                    {
-                        Debug.LogError("Bullet or BulletParent is missing!");
-                    }
+                    Instantiate(bullet, bulletParent.transform.position, Quaternion.identity);
+                    lastAttackTime = Time.time; // Update the time of the last shot
                 }
             }
             else
             {
-                // Switch back to idle/move animation
                 animator.SetBool("Enemy_Attack", false);
-
-                // Calculate a direction away from the player
-                Vector3 directionAwayFromPlayer = (transform.position - target.position).normalized;
-                Vector3 targetPosition = target.position + directionAwayFromPlayer * safeDistance;
-
-                // Set the agent's destination
-                agent.SetDestination(targetPosition);
             }
 
-            // Flip the sprite based on the target's position
+            // Flip sprite based on the player's position
             FlipSprite(target.position.x);
         }
     }
+
+
 
     // Method to command the enemy to follow the EliteEnemy
     public void CommandFollow(Vector3 leaderPosition)
