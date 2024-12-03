@@ -24,13 +24,13 @@ AnimationClip:
       value: {fileID: 778735708, guid: 79b4803b04ae08c449aff17600d77bbd, type: 3}
     - time: 0.11666667
       value: {fileID: 551449049, guid: 79b4803b04ae08c449aff17600d77bbd, type: 3}
-    - time: 0.21666667
+    - time: 0.23333333
       value: {fileID: -1144648198, guid: 79b4803b04ae08c449aff17600d77bbd, type: 3}
-    - time: 0.33333334
+    - time: 0.35
       value: {fileID: -926735686, guid: 79b4803b04ae08c449aff17600d77bbd, type: 3}
-    - time: 0.46666667
+    - time: 0.45
       value: {fileID: 1212304000, guid: 79b4803b04ae08c449aff17600d77bbd, type: 3}
-    - time: 0.5833333
+    - time: 0.56666666
       value: {fileID: -1569400550, guid: 79b4803b04ae08c449aff17600d77bbd, type: 3}
     - time: 0.68333334
       value: {fileID: 1685359279, guid: 79b4803b04ae08c449aff17600d77bbd, type: 3}
