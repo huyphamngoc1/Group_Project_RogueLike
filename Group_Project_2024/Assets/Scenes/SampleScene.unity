@@ -399,7 +399,7 @@ MonoBehaviour:
   safeDistance: 3
   followDistance: 5
   shootingRange: 3
-  bullet: {fileID: 1648151520937243587, guid: 8d25f99bae4099e4b995cc2175fb77e2, type: 3}
+  bullet: {fileID: 8832519421540026327, guid: f8ea4d94593047b488ffbfe3ef0401c5, type: 3}
   bulletParent: {fileID: 1969531851}
   attackCooldown: 1
 --- !u!195 &1099918291
